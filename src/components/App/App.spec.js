@@ -5,7 +5,7 @@ import App from './App';
 describe('App', () => {
     const wrapper = shallow(<App />);
 
-    it('renders the component', () => {
+    it('renders the App component', () => {
         expect(wrapper.find('.app-container').exists()).toBe(true);
     });
 });

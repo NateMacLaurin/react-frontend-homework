@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.style.scss'
 
 import hotelResultService from '../../services/hotel-result/hotel-result.service';
+import HotelList from '../HotelList/HotelList';
 
 const App = () => {
     const [hotels, setHotels] = useState([]);
@@ -28,7 +29,7 @@ const App = () => {
                         <button className="button">Reset</button>
                     </div>
                 </div>
-
+                <HotelList />
                 <div className="hotel-list">
                     {hotels.map(hotel => (
                         <div className="hotel-card" key={hotel.id}>

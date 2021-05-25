@@ -1,0 +1,82 @@
+###################################################
+Pre-Install Checklist:
+[x] - Install backend server.
+[x] - Install frontend server.
+[x] - Test run backend server.
+[x] - Test run frontend server.
+
+
+Issues:
+
+Error:
+I received an error: 
+
+"Cannot read property 'length' of undefined
+ at lineCounter (C:\Users\Nate\Documents\Programs\react-frontend-homework\node_modules\parcel-bundler\src\utils\lineCounter.js:3:30)" 
+
+When attempting npm start
+
+
+Resolution: 
+I deleted .cache directory in the root project folder and re-ran npm start.
+
+
+Error:
+When running docker build -t rocketmiles/react-backend-api . I received an error:
+
+"#9 [build 4/4] RUN ./gradlew build --no-daemon
+#9 sha256:c3477be12699aec7ae00b14ea7d916ba08a59ae08757c3d95c062ad266717fc6
+#9 0.179 /usr/bin/env: ‘sh\r’: No such file or directory
+#9 ERROR: executor failed running [/bin/sh -c ./gradlew build --no-daemon]: exit code: 127"
+
+Resolution:
+
+Installed gradle 7.0.2 for winx64 on host PC, set up gradle env var, and ran "gradle wrapper" from gitbash to init gradle daemon.
+
+
+###################################################
+Technical Requirements:
+
+[] - At least 2 components in the application,
+[] - Filter the result set by hotel name
+[] - Sort the result set by price in ascending order.
+[] - Handle all cases where the application might fail or produce no results to the user gracefully.
+[] - Add additional unit tests for core functionality.
+
+Stretch Goals:
+[] - Create Checklist
+[] - Focus on TDD
+[] - Details displayed on select
+[] - Placeholder Image for 404 image links
+[] - Styling Touchup
+[] - Review comments for clarity
+[] - Write Readme
+
+
+###################################################
+Component Tree:
+
+App
+	HotelFilterInput
+	HotelList
+		HotelCard
+			HotelCardSelectInput
+			
+
+Component Details:
+
+App
+	UserInputs Component
+	HotelList Component
+	Master state
+	
+HotelFilterInput
+	Inputs
+		Name
+		Price Menu
+		Reset
+	
+HotelList
+	Data
+	Select
+	
