@@ -3,6 +3,7 @@ import './App.style.scss'
 
 import hotelResultService from '../../services/hotel-result/hotel-result.service';
 import HotelList from '../HotelList/HotelList';
+import HotelFilterInput from '../HotelFilterInput/HotelFilterInput';
 
 const App = () => {
     const [hotels, setHotels] = useState([]);
@@ -17,6 +18,7 @@ const App = () => {
         <div className="app-container">
             <div className="content">
                 <div>
+                <HotelFilterInput />
                     <div className="filters">
                         Hotel name
                         <input type="text" className="input" maxLength={1}/>
