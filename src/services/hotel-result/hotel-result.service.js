@@ -5,7 +5,7 @@ class HotelResultService {
         return axios
             .get('http://localhost:8080/rest/rates')
             .then(response => response.data)
-            .catch(() => {})
+            .catch((err) => {console.log(`An error has occured in the API get: ${err}`)})
     }
 }
 
