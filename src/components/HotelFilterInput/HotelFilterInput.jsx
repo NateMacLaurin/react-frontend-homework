@@ -3,7 +3,17 @@ import React from 'react'
 const HotelFilterInput = () => {
     return (
         <div className="filters">
-            <h2>HotelFilterInput</h2>
+            <div className="filters">
+                Hotel Name
+                <input type="text" className="input" maxLength={1}/>
+                Price
+                <select name="" className="select">
+                    <option value="">Recommended</option>
+                    <option value="">Price low-to-high</option>
+                    <option value="">Price high-to-low</option>
+                </select>
+                <button className="button">Reset</button>
+            </div>
         </div>
     )
 }
