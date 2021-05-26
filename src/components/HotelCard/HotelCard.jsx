@@ -1,6 +1,10 @@
 import React from 'react';
 
+    //global flag for debug console logs
+const debug = true;
+
 const HotelCard = ( {hotel} ) => {
+    debug && console.log('hotel:', hotel);
     return (
         <>
             <div

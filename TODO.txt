@@ -10,14 +10,16 @@ TODO Checklist:
 [x] - Create Mock Static Hotel Data to Test.
 [x] - TEST: Filter and Sort Services with Mock Static Data.
 [x] - Write Filter and Sort Services.
-[] - TEST: HotelFilterInput component user inputs
-[] - Write HotelFilterInput component UI
-[] - Hook up HotelFIlterInput component to Filter and Sort services.
-[] - TEST: Mock Static Hotel Data passed to HotelList
-[] - Write HotelList component map
+[x] - TEST: HotelFilterInput component user inputs
+[x] - Write HotelFilterInput component UI
+[x] - Hook up HotelFIlterInput component to Filter and Sort services.
+[] - TEST: filtered and sorted data passed to HotelList
+[x] - Write HotelList component map
 [] - TEST: Mock Static Hotel Data passed on props and rendered in HotelCard
 [] - Write HotelCard component data display
 [] - TEST: HotelCard Select/Unselect function 
 [] - Write HotelCard Select/Unselect function
 [] - TEST: API call and filter error/no result on HotelError component
 [] - Write HotelError component to render passed error info on props and display "Retry" button on API failure
+[] - General Styling
+[] - Readme Update
