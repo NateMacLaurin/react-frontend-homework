@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.style.scss'
 
 import hotelResultService from '../../services/hotel-result/hotel-result.service';
-import HotelList from '../HotelList/HotelList';
-import HotelFilterInput from '../HotelFilterInput/HotelFilterInput';
+import HotelFilterInput from '../HotelFilterInput';
 
 const App = () => {
     const [hotels, setHotels] = useState([]);
@@ -17,10 +16,7 @@ const App = () => {
     return (
         <div className="app-container">
             <div className="content">
-                <div>
-                <HotelFilterInput />
-                </div>
-                <HotelList hotels={hotels} />
+                <HotelFilterInput hotels={hotels} />
             </div>
         </div>
     )

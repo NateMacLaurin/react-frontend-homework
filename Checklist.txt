@@ -37,72 +37,96 @@ Installed gradle 7.0.2 for winx64 on host PC, set up gradle env var, and ran "gr
 ###################################################
 Technical Requirements:
 
-[x] - At least 2 components in the application,
+[] - At least 2 components in the application,
 [] - Filter the result set by hotel name
 [] - Sort the result set by price in ascending order.
 [] - Handle all cases where the application might fail or produce no results to the user gracefully.
 [] - Add additional unit tests for core functionality.
-
-Stretch Goals:
-[x] - Create Checklist
-[x] - Focus on TDD
-[] - Details displayed on select
-[] - Placeholder Image for 404 image links
-[] - Styling Touchup
-[] - Review comments for clarity
-[] - Write Readme
-
 
 ###################################################
 Component Tree:
 
 App
 	HotelFilterInput
-	HotelList
-		HotelCard
-			HotelCardSelectInput
+		HotelList
+			HotelCard
+		HotelFilterError
+	HotelBackendError
 			
+	Reasoning: 
 
+	HotelList as a child of HotelFilterInput: the list displayed directly depends on the filters input by the user, 
+				so as the input state changes, we want to re-render the list each time based on our filter/sort results.
+	HotelCard as a child of HotelList: HotelCard will contain select button which will display/un-display additional data based on local state, 
+				so I want this scoped to its own component to avoid unnecessary re-renders of HotelList due to the localstate change.
+	HotelBackendError renders on App conditionally if the API GET request returns HTTP 500 to fail gracefully to the user.
+	HotelFilterError renders on HotelFilterInput conditionally if the filter returns no results to fail gracefully to the user.
+
+###################################################
 Component Details:
 
 App
-	UserInputs Component
-	HotelList Component
-	Master state
+	hotelList populated by API Get request on import when the app is rendered.
+	Conditional { hotelList ? HotelFilterInput : HotelBackendError}
+	HotelFilterError renders conditionally if the API Get request fails.
+	HotelFilterInput Component which receives the hotelList as a prop from App.
+	
+	Reasoning:	
+		We can render it here because the master list of hotels available to the user shouldn't change. In this way, we make one initial API call when App is rendered.
+		Handle filtering by passing the data on props to the HotelFilterInput component, creating a filtered and sorted array in that component, and then passing that array down to list.
 	
 HotelFilterInput
-	Inputs
-		Name
-		Price Menu
-		Reset
+	Input LocalStates
+		nameFilterInput (default empty string), sortSelect (default "Recommended"), 
+		
+	Local const:
+		filteredSortedHotelList -> filter function will run on each render
+	User Inputs
+		Input Field: Hotel Name Filter
+			event - sets nameFilterInput
+		Select: Price Recommended (Default), ASC, DESC
+			event - sets sortSelect
+		Reset Button
+			onClick - calls Reset function that sets localstates of inputs to default.
+			
+	Filter and Sort functionality handled here. How?
+		1. Filter: pass the filteredSortedList local state and the nameFilterInput string entered by user 
+		2. Sort: pass the filteredSortedHotelList local state and the sortSelect entered by user
+	Conditional { results ? HotelList Component {filteredSortedHotelList} : HotelFilterError} - if our filtered or sorted lists return nothing, we need to fail gracefully, else pass the filteredSortedHotelList on props.
+	
 	
 HotelList
 	Data
         hotels.hotelStaticContent.name
 	Select
 	
+###################################################
+User Inputs:
+Hotel Name
+	input character event - filter the list of hotels by results.hotels.hotelStaticContent.name
+		use Array.filter method here?
+Hotel Sort Select
+	onSelect event - sort HotelList by results.hotels.lowestAveragePrice both ASC (low to high) and DESC (high to low)
+		use Array.sort method here?
+Reset
+	onClick event - reset the user input states to default.
+		ensure the HotelList component re-renders so we map through each HotelCard hotel again.
+Select
+	onClick event - Display additional API data in the relevant hotel card to client.
+Back
+	onClick event - Un-select the additional API data in the relevant hotel card.
+
+###################################################
+State Requirements:
+HotelCard
+	isSelected
+HotelFilterInput
+	nameFilterInput
+	sortSelect
+    
+###################################################
 Notes:
 Setup issues.
 Break down components for the first requirement, how will they need to scale? What functionality can be grouped?
 I wanted to be able to test the backend get request, so I set up a mock axios get function with Jest, but I was getting a "RegeneratorRuntime-is-not-defined" error. Turns out Babel transform runtime needs to be installed to test promises.
 Once I ran tests on the Axios API call to get hotel data, and have ensured we're targeting the correct address, we're only calling GET once, and we're getting expected data back, I am ready to look at how we want to store that data in state, want to avoid prop drilling!
-
-
-User Inputs:
-Hotel Name
-	input character event - filter the list of hotels by results.hotels.hotelStaticContent.name
-		use Array.filter method here?
-Price
-	onSelect event - sort HotelList by results.hotels.lowestAveragePrice both ASC (low to high) and DESC (high to low)
-		use Array.sort method here?
-Reset
-	onClick event - reset the filters to their default states.
-		ensure the HotelList component re-renders so we map through each HotelCard hotel again.
-Select
-	onClick event - Display additional API data in the relevant hotel card to client.
-
-State Requirements:
-	isSelected
-HotelFilterInput
-	Local State:
-		
