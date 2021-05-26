@@ -13,6 +13,9 @@ I started structuring the hotel-input-services, then decided to diverge to js fu
 I encountered two failures in my HotelList and HotelCard components because they both experience exceptions since they are rendering API data which is not passed in the test. In order to resolve this, I passed the test API data on props to the tested component.
 In order to efficiently test inputs and outputs from my mock data in jest, I set up static arrays of what the data is expected to be. This ended up working great to organize different unit tests to cover many different pieces of the code and keep inputs and outputs grouped together while maintaining scalability of the tests.
 After I finished building out the Input sort and filter function tests, I wrote the input UI in the HotelFilterInput component. A bit rusty on react state management without redux, and I had to refactor some of the tests to maintain data structure consistency with the actual app hotel data passed on props to children.
+Getting the components to render properly took a bit of effort, I decided to forgo any useEffect hooks and stuck to event controlled functions, which worked great! While testing various input methods, I discovered that it is necessary in my implementation to
+nest the filter function inside the sort function. This was required because the filter function calls the full hotel data prop each time. I'm calling the full hotel data prop because I need to regain hotels that were previously filtered out if I backspace the input. Future implementation
+might use the useRefs hook to store the previous sorted arrays to avoid calling the hotel prop each time I filter.
 
 ###################################################
 Issues:
