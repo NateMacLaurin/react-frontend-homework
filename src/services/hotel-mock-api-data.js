@@ -209,7 +209,7 @@
         }
     }
     */
-const mockHotelData =       {
+const mockHotelData =   {
     "success": true,
     "results": {
         "total": 3,
