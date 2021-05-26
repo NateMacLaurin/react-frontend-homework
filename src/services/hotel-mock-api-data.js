@@ -281,7 +281,7 @@ const mockHotelData =   {
                 "description":"Placeholder Description3.",
                 "stars": 3,
                 "rating": 9,
-                "numberOfReviews": 685
+                "numberOfReviews": 1685
             }
         ]
     }

@@ -6,60 +6,67 @@
     Sort will return boolean false for error handlingif somehow a select value is passed which is not expected.
 */
 
+//add debug boolean to flag console logs on and off
+const debug = false;
+
 export function hotelFilter(dataToFilter, filterInput) {
-        //check if filter input exists
-    if(!filterInput){
-            //no filter input passed, so passthrough the original dataToFilter parameter (Default)
+
+    debug && console.log('DEBUG: filterInput', filterInput);
+        //check if filter input is empty string
+    if(filterInput === ""){
+            //input filter is empty string, so passthrough the original dataToFilter parameter (Default)
         return dataToFilter;
+    }else if(!filterInput){
+            //input filter is falsey and not empty string, return false for error handling
+        return false;
     } else {
-            //if filter input exists, filter the input data by the filterInput parameter
-        const filteredData = dataToFilter.filter((hotel) => {
-                //send API name string data to lower case before the comparison
-            hotel.hotelStaticContent.name.toLowerCase().includes(
-                    //sanitize the user input string by culling white spaces and sending all chars to lower case
-                    filterInput.trim().toLowerCase()
-                );
-            }
-        );
-        if(filteredData.length === 0){
-                //if the filter returns no results, return false for error handling.
-            return false;
-        } else {
-                //return filtered data
-            return filteredData;   
+            //if filter input is not falsey, filter the input data by the filterInput parameter
+            debug && console.log('DEBUG: dataToFilter.results.hotels', dataToFilter.results.hotels);
+            debug && console.log('DEBUG: filterInput sanitized', filterInput.trim().toLowerCase());
+
+            const filteredData = dataToFilter.results.hotels.filter(
+                (hotel) => {
+                    return hotel.hotelStaticContent.name.toLowerCase().includes(filterInput.trim().toLowerCase());
+                }
+            );
+            debug && console.log('DEBUG: Filtered Data:', filteredData);
+            if(filteredData.length === 0){
+                    //if the filter returns no results, return false for error handling.
+                return false;
+            } else {
+                    //return filtered data
+                return filteredData;   
         }    
     }
 }
 
 export function hotelSort(dataToSort, sortSelect) {
 
-        //initialize empty array to hold sorted data
-    const sortedData = [];
-
         //check all cases from user select
     switch(sortSelect) {
-        case 'recommended':
-            //array.sort by personal "recommended" formula: [rating*numberOfReviews] descending(b-a) (Default)
-            const sortedData = dataToSort.sort((a, b) => {
-                b.rating*b.numberOfReviews - a.rating*a.numberOfReviews;
+        case 'recommended': {
+                //array.sort by personal "recommended" formula: [rating*numberOfReviews] descending(b-a) (Default)
+            const sortedData = dataToSort.results.hotels.sort((a, b) => {
+                return b.rating*b.numberOfReviews - a.rating*a.numberOfReviews;
             });
-            break;
-        case 'descending':
-            //array.sort by lowestAveragePrice.amount descending(b-a)
-            const sortedData = dataToSort.sort((a, b) => {
-                b.lowestAveragePrice.amount - a.lowestAveragePrice.amount;
+            return sortedData;
+        }
+        case 'descending': {
+                //array.sort by lowestAveragePrice.amount descending(b-a)
+            const sortedData = dataToSort.results.hotels.sort((a, b) => {
+                return b.lowestAveragePrice.amount - a.lowestAveragePrice.amount;
             });
-            break;
-        case 'ascending':
-            //array.sort by lowestAveragePrice.amount ascending(a-b)
-            const sortedData = dataToSort.sort((a, b) => {
-                a.lowestAveragePrice.amount - b.lowestAveragePrice.amount;
+            return sortedData;
+        }
+        case 'ascending': {
+                //array.sort by lowestAveragePrice.amount ascending(a-b)
+            const sortedData = dataToSort.results.hotels.sort((a, b) => {
+                return a.lowestAveragePrice.amount - b.lowestAveragePrice.amount;
             });
-            break;
+            return sortedData;
+        }
         default: 
-            //if somehow one of the select cases is not passed on sortInput param, return false for error handling
+                //if somehow one of the select cases is not passed on sortInput param, return false for error handling
             return false;
     }
-        //return sorted data
-    return sortedData;
 }
