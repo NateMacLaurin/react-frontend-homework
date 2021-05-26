@@ -21,3 +21,5 @@ TODO Checklist:
 [] - Write HotelCard Select/Unselect function
 [] - TEST: API call and filter error/no result on HotelError component
 [] - Write HotelError component to render passed error info on props and display "Retry" button on API failure
+[] - General Styling
+[] - Readme Update
