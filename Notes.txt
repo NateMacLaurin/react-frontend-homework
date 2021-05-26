@@ -9,7 +9,8 @@ to utilize index.js files to simplify component imports across the app. While bu
 which will allow the component to be used for other errors should the need arise.
 I utilized the example API data to create a mock api dataset for unit tests. I'm implementing this in unit tests in the hotel-input services, and through a test and debug flag in App on the initial API call so that I can avoid calling the live API 
 while building out the component structure since react re-renders on change. This will allow me to take advantage of viewing the live frontend changes without spamming the public API.
-
+I started structuring the hotel-input-services, then decided to diverge to js function exports instead of using the new angular service structure since I am familiar with that. At this point I set up some on render tests and ran them, at which point
+I encountered two failures in my HotelList and HotelCard components because they both experience exceptions since they are rendering API data which is not passed in the test. In order to resolve this, I passed the test API data on props to the tested component.
 ###################################################
 Issues:
 
@@ -99,7 +100,7 @@ HotelCard
         hotels.hotelStaticContent.name etc
 	Select
 		button onClick function to display extra data
-		
+
 HotelError
 	Display the error info from the passed prop and a button to prompt the user to reset the filters and retry the API call. 
 	
