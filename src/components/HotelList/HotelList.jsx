@@ -1,10 +1,15 @@
 import React from 'react';
 import HotelCard from '../HotelCard';
 
-const HotelList = ( {hotels} ) => {
+    //global flag for debug console logs
+const debug = true;
+
+const HotelList = ( {sortedHotels} ) => {
+    debug && console.log('HOTELLIST - DEBUG: sortedHotels:', sortedHotels);
+
     return (
         <div className="hotel-list">
-            {hotels.map(hotel => (
+            {sortedHotels.map(hotel => (
                 <div className="hotel-card" key={hotel.id}>
                     <HotelCard hotel={hotel} />
                 </div>

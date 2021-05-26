@@ -1,6 +1,11 @@
 import { hotelFilter, hotelSort } from './hotel-input-functions';
 import MockData from '../../services/hotel-mock-api-data';
 
+    //pull hotels array of objects out of the Mock API call data as it is passed on props in components
+const MockDataProp = MockData.results.hotels;
+
+console.log('MockDataProp', MockDataProp);
+
 describe('HotelInputFunctions - Filter', () => {
 
         //create array of filter input values for testing
@@ -15,19 +20,19 @@ describe('HotelInputFunctions - Filter', () => {
             casedInput: "TESTNAME2",
         },
         filterOutput: {
-            emptyOutput: MockData,
+            emptyOutput: MockDataProp,
             falsyOutput: false,
             noResultStringOutput: false,
-            oneResultValidOutput: [MockData.results.hotels[1]],
-            partialValidOutput: [MockData.results.hotels[0]],
-            whitespaceTrimOutput: [MockData.results.hotels[2]],
-            casedOutput: [MockData.results.hotels[1]],
+            oneResultValidOutput: [MockDataProp[1]],
+            partialValidOutput: [MockDataProp[0]],
+            whitespaceTrimOutput: [MockDataProp[2]],
+            casedOutput: [MockDataProp[1]],
         }
     };
 
     it('passes through the input data when filterInput is empty string (DEFAULT)', () => {
         expect(
-            hotelFilter(MockData, filterTests.filterInput.emptyInput)
+            hotelFilter(MockDataProp, filterTests.filterInput.emptyInput)
         )
         .toStrictEqual(
             filterTests.filterOutput.emptyOutput
@@ -37,7 +42,7 @@ describe('HotelInputFunctions - Filter', () => {
     it('returns false when the filterInput is falsey and not empty string', () => {
         filterTests.filterInput.falsyInput.forEach((input) => {
             expect(
-                hotelFilter(MockData, input)
+                hotelFilter(MockDataProp, input)
             )
             .toStrictEqual(
                 filterTests.filterOutput.falsyOutput
@@ -47,7 +52,7 @@ describe('HotelInputFunctions - Filter', () => {
 
     it('returns false when called with a valid, unmatched input term', () => {
         expect(
-            hotelFilter(MockData, filterTests.filterInput.noResultStringInput)
+            hotelFilter(MockDataProp, filterTests.filterInput.noResultStringInput)
         )
         .toStrictEqual(
             filterTests.filterOutput.noResultStringOutput
@@ -56,7 +61,7 @@ describe('HotelInputFunctions - Filter', () => {
 
     it('returns filteredData object when called with a valid input term', () => {
         expect(
-            hotelFilter(MockData, filterTests.filterInput.oneResultValidInput)
+            hotelFilter(MockDataProp, filterTests.filterInput.oneResultValidInput)
         )
         .toEqual(
             filterTests.filterOutput.oneResultValidOutput
@@ -66,7 +71,7 @@ describe('HotelInputFunctions - Filter', () => {
     it('returns filteredData object when called with a partially matched valid input term', () => {
         filterTests.filterInput.partialValidInput.forEach((input) => {
             expect(
-                hotelFilter(MockData, input)
+                hotelFilter(MockDataProp, input)
             )
             .toStrictEqual(
                 filterTests.filterOutput.partialValidOutput
@@ -77,7 +82,7 @@ describe('HotelInputFunctions - Filter', () => {
     it('returns filteredData object when called with a valid input term with whitespace characters', () => {
         filterTests.filterInput.whitespaceTrimInput.forEach((input) => {
             expect(
-                hotelFilter(MockData, input)
+                hotelFilter(MockDataProp, input)
             )
             .toStrictEqual(
                 filterTests.filterOutput.whitespaceTrimOutput
@@ -101,9 +106,9 @@ describe('HotelInputFunctions - Sort', () => {
             misterRobotInput: '#DROP_TABLE Mainframe;'
         },
         sortOutput: {
-            validRecommendedOutput: [MockData.results.hotels[2], MockData.results.hotels[1], MockData.results.hotels[0]],
-            validDescendingOutput: [MockData.results.hotels[0], MockData.results.hotels[2], MockData.results.hotels[1]],
-            validAscendingOutput: [MockData.results.hotels[1], MockData.results.hotels[2], MockData.results.hotels[0]],
+            validRecommendedOutput: [MockDataProp[2], MockDataProp[1], MockDataProp[0]],
+            validDescendingOutput: [MockDataProp[0], MockDataProp[2], MockDataProp[1]],
+            validAscendingOutput: [MockDataProp[1], MockDataProp[2], MockDataProp[0]],
             falseySelectorOutput: false,
             capitalOutput: false,
             partialOutput: false,
@@ -114,7 +119,7 @@ describe('HotelInputFunctions - Sort', () => {
 
     it('returns properly sorted array by recommendation when passed valid input value from selector', () => {
         expect(
-            hotelSort(MockData, sortTests.sortInput.validRecommendedInput)
+            hotelSort(MockDataProp, sortTests.sortInput.validRecommendedInput)
         )
         .toStrictEqual(
             sortTests.sortOutput.validRecommendedOutput
@@ -123,7 +128,7 @@ describe('HotelInputFunctions - Sort', () => {
 
     it('returns properly sorted array by descending price when passed valid input value from selector', () => {
         expect(
-            hotelSort(MockData, sortTests.sortInput.validDescendingInput)
+            hotelSort(MockDataProp, sortTests.sortInput.validDescendingInput)
         )
         .toStrictEqual(
             sortTests.sortOutput.validDescendingOutput
@@ -132,7 +137,7 @@ describe('HotelInputFunctions - Sort', () => {
 
     it('returns properly sorted array by ascending price when passed valid input value from selector', () => {
         expect(
-            hotelSort(MockData, sortTests.sortInput.validAscendingInput)
+            hotelSort(MockDataProp, sortTests.sortInput.validAscendingInput)
         )
         .toStrictEqual(
             sortTests.sortOutput.validAscendingOutput
@@ -142,7 +147,7 @@ describe('HotelInputFunctions - Sort', () => {
     it('returns false when the selector value is falsey', () => {
         sortTests.sortInput.falseySelectorInput.forEach((input) => {
             expect(
-                hotelSort(MockData, input)
+                hotelSort(MockDataProp, input)
             )
             .toStrictEqual(
                 sortTests.sortOutput.falseySelectorOutput
@@ -152,7 +157,7 @@ describe('HotelInputFunctions - Sort', () => {
 
     it('returns false when the selector value is invalid by capitalization', () => {
         expect(
-            hotelSort(MockData, sortTests.sortInput.capitalIntput)
+            hotelSort(MockDataProp, sortTests.sortInput.capitalIntput)
         )
         .toStrictEqual(
             sortTests.sortOutput.capitalOutput
@@ -161,7 +166,7 @@ describe('HotelInputFunctions - Sort', () => {
 
     it('returns false when the selector value is invalid by partial string', () => {
         expect(
-            hotelSort(MockData, sortTests.sortInput.partialIntput)
+            hotelSort(MockDataProp, sortTests.sortInput.partialIntput)
         )
         .toStrictEqual(
             sortTests.sortOutput.partialOutput
@@ -170,7 +175,7 @@ describe('HotelInputFunctions - Sort', () => {
 
     it('returns false when the selector value is invalid alpha-numeric and character input', () => {
         expect(
-            hotelSort(MockData, sortTests.sortInput.numberAndCharsIntput)
+            hotelSort(MockDataProp, sortTests.sortInput.numberAndCharsIntput)
         )
         .toStrictEqual(
             sortTests.sortOutput.numberAndCharsOutput
@@ -179,11 +184,10 @@ describe('HotelInputFunctions - Sort', () => {
 
     it('returns false when the selector value is a hacker', () => {
         expect(
-            hotelSort(MockData, sortTests.sortInput.misterRobotIntput)
+            hotelSort(MockDataProp, sortTests.sortInput.misterRobotIntput)
         )
         .toStrictEqual(
             sortTests.sortOutput.misterRobotOutput
         );
     });
-
 });
