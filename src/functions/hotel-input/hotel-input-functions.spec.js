@@ -99,7 +99,8 @@ describe('HotelInputFunctions - Sort', () => {
             validRecommendedInput: 'recommended',
             validDescendingInput: 'descending',
             validAscendingInput: 'ascending',
-            falseySelectorInput: ['', undefined, null, NaN, 0, false],
+            emptyStringInput: '',
+            falseySelectorInput: [undefined, null, NaN, 0, false],
             capitalInput: 'Recommended',
             partialInput: ['rec', 'ommended'],
             numberAndCharsInput: 'FH*SVG1',
@@ -109,6 +110,7 @@ describe('HotelInputFunctions - Sort', () => {
             validRecommendedOutput: [MockDataProp[2], MockDataProp[1], MockDataProp[0]],
             validDescendingOutput: [MockDataProp[0], MockDataProp[2], MockDataProp[1]],
             validAscendingOutput: [MockDataProp[1], MockDataProp[2], MockDataProp[0]],
+            emptyStringOutput: [MockDataProp[2], MockDataProp[1], MockDataProp[0]],
             falseySelectorOutput: false,
             capitalOutput: false,
             partialOutput: false,
@@ -141,6 +143,15 @@ describe('HotelInputFunctions - Sort', () => {
         )
         .toStrictEqual(
             sortTests.sortOutput.validAscendingOutput
+        );
+    });
+
+    it('returns properly sorted default (recommended) array by ascending price when passed empty string', () => {
+        expect(
+            hotelSort(MockDataProp, sortTests.sortInput.emptyStringInput)
+        )
+        .toStrictEqual(
+            sortTests.sortOutput.emptyStringOutput
         );
     });
 

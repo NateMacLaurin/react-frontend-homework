@@ -11,7 +11,9 @@ I utilized the example API data to create a mock api dataset for unit tests. I'm
 while building out the component structure since react re-renders on change. This will allow me to take advantage of viewing the live frontend changes without spamming the public API.
 I started structuring the hotel-input-services, then decided to diverge to js function exports instead of using the new angular service structure since I am familiar with that. At this point I set up some on render tests and ran them, at which point
 I encountered two failures in my HotelList and HotelCard components because they both experience exceptions since they are rendering API data which is not passed in the test. In order to resolve this, I passed the test API data on props to the tested component.
-In order to efficiently test inputs and outputs from my mock data in jest, I set up static arrays of what the data is expected to be.
+In order to efficiently test inputs and outputs from my mock data in jest, I set up static arrays of what the data is expected to be. This ended up working great to organize different unit tests to cover many different pieces of the code and keep inputs and outputs grouped together while maintaining scalability of the tests.
+After I finished building out the Input sort and filter function tests, I wrote the input UI in the HotelFilterInput component. A bit rusty on react state management without redux, and I had to refactor some of the tests to maintain data structure consistency with the actual app hotel data passed on props to children.
+
 ###################################################
 Issues:
 

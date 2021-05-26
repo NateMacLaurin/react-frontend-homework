@@ -45,8 +45,13 @@ export function hotelFilter(dataToFilter, filterInput) {
 export function hotelSort(dataToSort, sortSelect) {
     debug && console.log('FUNCTIONS - SORT - DEBUG: dataToSort', dataToSort);
     debug && console.log('FUNCTIONS - SORT - DEBUG: sortSelect', sortSelect);
+        //if we receive falsy data from the database, return false for error handling.
+    if(!dataToSort){
+        return false;
+    }
         //check all cases from user select
     switch(sortSelect) {
+        case '':
         case 'recommended': {
                 //array.sort by personal "recommended" formula: [rating*numberOfReviews] descending(b-a) (Default)
             const sortedData = dataToSort.sort((a, b) => {
