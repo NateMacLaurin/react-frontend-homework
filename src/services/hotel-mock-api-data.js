@@ -91,10 +91,12 @@
                         "amount": 699.0
                     },
                     "hotelStaticContent": {
-                        "url": "http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg"
+                        "mainImage": {
+                            "url": "http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg"
+                        },
+                        "name": "Omni Chicago Hotel & Suites Magnificent Mile",
+                        "neighborhoodName": "Magnificent Mile"
                     },
-                    "name": "Omni Chicago Hotel & Suites Magnificent Mile",
-                    "neighborhoodName": "Magnificent Mile",
                     "description":"Placeholder Description.",
                     "stars": 4,
                     "rating": 8,
@@ -110,10 +112,12 @@
                         "amount": 479.0
                     },
                     "hotelStaticContent": {
-                        "url": "http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg"
+                        "mainImage": {
+                            "url": "http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg"
+                        },
+                        "name": "Omni Chicago Hotel & Suites Magnificent Mile",
+                        "neighborhoodName": "Magnificent Mile"
                     },
-                    "name": "Omni Chicago Hotel & Suites Magnificent Mile",
-                    "neighborhoodName": "Magnificent Mile",
                     "description":"Placeholder Description.",
                     "stars": 2,
                     "rating": 8,
@@ -129,10 +133,12 @@
                         "amount": 529.0
                     },
                     "hotelStaticContent": {
+                    "mainImage": {
                         "url": "http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg"
                     },
                     "name": "Omni Chicago Hotel & Suites Magnificent Mile",
-                    "neighborhoodName": "Magnificent Mile",
+                    "neighborhoodName": "Magnificent Mile"
+                    },
                     "description":"Placeholder Description.",
                     "stars": 3,
                     "rating": 9,
@@ -224,11 +230,13 @@ const mockHotelData =   {
                     "amount": 699.0
                 },
                 "hotelStaticContent": {
-                    "url": "http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg"
+                    "mainImage": {
+                        "url": "http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg"
+                    },
+                    "name": "Omni Chicago Hotel & Suites Magnificent Mile",
+                    "neighborhoodName": "Magnificent Mile"
                 },
-                "name": "Omni Chicago Hotel & Suites Magnificent Mile",
-                "neighborhoodName": "Magnificent Mile",
-                "description":"Placeholder Description.",
+                "description":"Placeholder Description1.",
                 "stars": 4,
                 "rating": 8,
                 "numberOfReviews": 230
@@ -243,11 +251,13 @@ const mockHotelData =   {
                     "amount": 479.0
                 },
                 "hotelStaticContent": {
-                    "url": "http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg"
+                    "mainImage": {
+                        "url": "http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg"
+                    },
+                    "name": "TestName2",
+                    "neighborhoodName": "TestNeighborhood2"
                 },
-                "name": "Omni Chicago Hotel & Suites Magnificent Mile",
-                "neighborhoodName": "Magnificent Mile",
-                "description":"Placeholder Description.",
+                "description":"Placeholder Description2.",
                 "stars": 2,
                 "rating": 8,
                 "numberOfReviews": 1147
@@ -262,11 +272,13 @@ const mockHotelData =   {
                     "amount": 529.0
                 },
                 "hotelStaticContent": {
+                    "mainImage": {
                     "url": "http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg"
+                    },
+                    "name": "TestName3",
+                    "neighborhoodName": "TestNeighborhood3"
                 },
-                "name": "Omni Chicago Hotel & Suites Magnificent Mile",
-                "neighborhoodName": "Magnificent Mile",
-                "description":"Placeholder Description.",
+                "description":"Placeholder Description3.",
                 "stars": 3,
                 "rating": 9,
                 "numberOfReviews": 685

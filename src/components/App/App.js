@@ -15,7 +15,7 @@ const App = () => {
     useEffect(() => {
         if(testing){
                 //set state to the test data if testing
-            setHotels(testData);
+            setHotels(testData.results.hotels);
             debug && console.log(`TEST DEBUG: Did we succeed? ${testData.success}`);
             debug && console.log('TEST DEBUG: Log the test data to console:', testData.results.hotels);
             debug && console.log(`TEST DEBUG: How many did we get? ${testData.results.total}`);

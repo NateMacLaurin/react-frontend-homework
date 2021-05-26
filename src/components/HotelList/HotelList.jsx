@@ -3,7 +3,7 @@ import React from 'react';
 const HotelList = ( {hotels} ) => {
     return (
         <div className="hotel-list">
-            {/*hotels.map(hotel => (
+            {hotels.map(hotel => (
                 <div className="hotel-card" key={hotel.id}>
                     <div
                         className="image"
@@ -31,7 +31,7 @@ const HotelList = ( {hotels} ) => {
                     </div>
                 </div>
                 )
-            )*/}
+            )}
         </div>
     )
 }
