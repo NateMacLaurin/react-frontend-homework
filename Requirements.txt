@@ -1,0 +1,8 @@
+###################################################
+Technical Requirements:
+
+[x] - At least 2 components in the application,
+[] - Filter the result set by hotel name
+[] - Sort the result set by price in ascending order.
+[] - Handle all cases where the application might fail or produce no results to the user gracefully.
+[] - Add additional unit tests for core functionality.

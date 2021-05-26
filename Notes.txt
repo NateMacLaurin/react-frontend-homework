@@ -1,11 +1,14 @@
 ###################################################
-Pre-Install Checklist:
-[x] - Install backend server.
-[x] - Install frontend server.
-[x] - Test run backend server.
-[x] - Test run frontend server.
+Notes:
+Setup issues.
+Break down components for the first requirement, how will they need to scale? What functionality can be grouped?
+I wanted to be able to test the backend get request, so I set up a mock axios get function with Jest, but I was getting a "RegeneratorRuntime-is-not-defined" error. Turns out Babel transform runtime needs to be installed to test promises.
+Once I ran tests on the Axios API call to get hotel data, and have ensured we're targeting the correct address, we're only calling GET once, and we're getting expected data back, I am ready to look at component structure.
+After jumping the gun and breaking the app component out into the planned HotelFilterInput and HitelList components on master, I created a feature branch for the rest of the components skeletons. While creating components, I'm continuing
+to utilize index.js files to simplify component imports across the app. While building out the component skeletons, I decided to combine the HotelBackendError and HotelFilterError components into one HotelError component with a passed error prop, 
+which will allow the component to be used for other errors should the need arise.
 
-
+###################################################
 Issues:
 
 Error:
@@ -35,23 +38,14 @@ Installed gradle 7.0.2 for winx64 on host PC, set up gradle env var, and ran "gr
 
 
 ###################################################
-Technical Requirements:
-
-[] - At least 2 components in the application,
-[] - Filter the result set by hotel name
-[] - Sort the result set by price in ascending order.
-[] - Handle all cases where the application might fail or produce no results to the user gracefully.
-[] - Add additional unit tests for core functionality.
-
-###################################################
 Component Tree:
 
 App
 	HotelFilterInput
 		HotelList
 			HotelCard
-		HotelFilterError
-	HotelBackendError
+		HotelError
+	HotelError
 			
 	Reasoning: 
 
@@ -59,8 +53,8 @@ App
 				so as the input state changes, we want to re-render the list each time based on our filter/sort results.
 	HotelCard as a child of HotelList: HotelCard will contain select button which will display/un-display additional data based on local state, 
 				so I want this scoped to its own component to avoid unnecessary re-renders of HotelList due to the localstate change.
-	HotelBackendError renders on App conditionally if the API GET request returns HTTP 500 to fail gracefully to the user.
-	HotelFilterError renders on HotelFilterInput conditionally if the filter returns no results to fail gracefully to the user.
+	HotelError renders on App conditionally if the API GET request returns HTTP 500 to fail gracefully to the user.
+	HotelError renders on HotelFilterInput conditionally if the filter returns no results to fail gracefully to the user.
 
 ###################################################
 Component Details:
@@ -68,7 +62,7 @@ Component Details:
 App
 	hotelList populated by API Get request on import when the app is rendered.
 	Conditional { hotelList ? HotelFilterInput : HotelBackendError}
-	HotelFilterError renders conditionally if the API Get request fails.
+	HotelError renders conditionally if the API Get request fails.
 	HotelFilterInput Component which receives the hotelList as a prop from App.
 	
 	Reasoning:	
@@ -96,9 +90,15 @@ HotelFilterInput
 	
 	
 HotelList
+	Map the passed filterList prop from HotelFilterInput into HotelCard components
+	
+HotelCard
 	Data
         hotels.hotelStaticContent.name
 	Select
+	
+HotelError
+	Display the error info from the passed prop and a button to prompt the user to reset the filters and retry the API call. 
 	
 ###################################################
 User Inputs:
@@ -113,7 +113,7 @@ Reset
 		ensure the HotelList component re-renders so we map through each HotelCard hotel again.
 Select
 	onClick event - Display additional API data in the relevant hotel card to client.
-Back
+Cancel/Unselect
 	onClick event - Un-select the additional API data in the relevant hotel card.
 
 ###################################################
@@ -123,10 +123,3 @@ HotelCard
 HotelFilterInput
 	nameFilterInput
 	sortSelect
-    
-###################################################
-Notes:
-Setup issues.
-Break down components for the first requirement, how will they need to scale? What functionality can be grouped?
-I wanted to be able to test the backend get request, so I set up a mock axios get function with Jest, but I was getting a "RegeneratorRuntime-is-not-defined" error. Turns out Babel transform runtime needs to be installed to test promises.
-Once I ran tests on the Axios API call to get hotel data, and have ensured we're targeting the correct address, we're only calling GET once, and we're getting expected data back, I am ready to look at how we want to store that data in state, want to avoid prop drilling!
