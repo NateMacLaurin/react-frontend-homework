@@ -1,4 +1,10 @@
-
+/*
+    These functions will be called in the HotelFilterInput component.
+    Filter inputs will be sanitized for whitespace and compared by lowercase chars only so user input is not case-sensitive.
+    Their return values will be used to build the filtered hotel array to pass down on props to HotelList.
+    Filter will return boolean false for error handling if no results are found based on the filterInput parameter.
+    Sort will return boolean false for error handlingif somehow a select value is passed which is not expected.
+*/
 
 export function hotelFilter(dataToFilter, filterInput) {
         //check if filter input exists
