@@ -5,6 +5,10 @@ const debug = true;
 
 const HotelCard = ( {hotel} ) => {
     debug && console.log('hotel:', hotel);
+
+    const handleSelect = () => {
+        debug && console.log('HOTELCARD - DEBUG: In handleSelect', hotel.id);
+    }
     return (
         <>
             <div
@@ -29,7 +33,7 @@ const HotelCard = ( {hotel} ) => {
                 <span className="rewards">
                     {hotel.rewards.miles} miles
                 </span>
-                <button className="button">Select</button>
+                <button className="button" onClick={handleSelect}>Select</button>
             </div>
         </>
     )
