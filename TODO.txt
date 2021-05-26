@@ -7,7 +7,7 @@ TODO Checklist:
 [x] - TEST: mock Axios to validate backend API.
 [x] - TEST: frontend component tree renders.
 [x] - Create Frontend Component Skeletons.
-[] - Create Mock Static Hotel Data to Test.
+[x] - Create Mock Static Hotel Data to Test.
 [] - TEST: Filter and Sort Services with Mock Static Data.
 [] - Write Filter and Sort Services.
 [] - TEST: HotelFilterInput component user inputs

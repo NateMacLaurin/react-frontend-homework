@@ -7,7 +7,11 @@ Once I ran tests on the Axios API call to get hotel data, and have ensured we're
 After jumping the gun and breaking the app component out into the planned HotelFilterInput and HitelList components on master, I created a feature branch for the rest of the components skeletons. While creating components, I'm continuing
 to utilize index.js files to simplify component imports across the app. While building out the component skeletons, I decided to combine the HotelBackendError and HotelFilterError components into one HotelError component with a passed error prop, 
 which will allow the component to be used for other errors should the need arise.
-
+I utilized the example API data to create a mock api dataset for unit tests. I'm implementing this in unit tests in the hotel-input services, and through a test and debug flag in App on the initial API call so that I can avoid calling the live API 
+while building out the component structure since react re-renders on change. This will allow me to take advantage of viewing the live frontend changes without spamming the public API.
+I started structuring the hotel-input-services, then decided to diverge to js function exports instead of using the new angular service structure since I am familiar with that. At this point I set up some on render tests and ran them, at which point
+I encountered two failures in my HotelList and HotelCard components because they both experience exceptions since they are rendering API data which is not passed in the test. In order to resolve this, I passed the test API data on props to the tested component.
+In order to efficiently test inputs and outputs from my mock data in jest, I set up static arrays of what the data is expected to be.
 ###################################################
 Issues:
 
@@ -94,9 +98,10 @@ HotelList
 	
 HotelCard
 	Data
-        hotels.hotelStaticContent.name
+        hotels.hotelStaticContent.name etc
 	Select
-	
+		button onClick function to display extra data
+
 HotelError
 	Display the error info from the passed prop and a button to prompt the user to reset the filters and retry the API call. 
 	

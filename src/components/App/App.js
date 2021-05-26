@@ -3,16 +3,16 @@ import './App.style.scss'
 
 import hotelResultService from '../../services/hotel-result/hotel-result.service';
 import HotelFilterInput from '../HotelFilterInput';
+import testData from '../../services/hotel-mock-api-data';
+
+//global flag to either query the 
+const testing = true;
+const debug = true;
 
 const App = () => {
     const [hotels, setHotels] = useState([]);
 
     useEffect(() => {
-<<<<<<< Updated upstream
-        hotelResultService.get().then(response => {
-            setHotels(response.results.hotels)
-        })
-=======
             //check if we're testing so we don't call the live API
         if(testing){  
                 //test debug logs to dev console
@@ -35,7 +35,6 @@ const App = () => {
                 setHotels(response.results.hotels);
             })
         }
->>>>>>> Stashed changes
     }, []);
 
     return (
