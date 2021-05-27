@@ -4,16 +4,22 @@ import './App.style.scss'
 import hotelResultService from '../../services/hotel-result/hotel-result.service';
 import HotelFilterInput from '../HotelFilterInput';
 import testData from '../../services/hotel-mock-api-data';
+import HotelError from '../HotelError';
 
-    //global flags for debug console logs and test or live API backend
-const testing = true;
+//global flags for debug console logs and test or live API backend
+    //true - Test API, false - live API
+const testing = false;
+    //toggle debug console logs
 const debug = true;
+    //simulate an API error
+const errorTest = false;
 
 const App = () => {
         //local state to store the API data from GET request
     const [hotels, setHotels] = useState([]);
         //local state to hold the child component render until promise return
     const [isLoaded, setIsLoaded] = useState(false);
+    const [apiErrorFlag, setApiErrorFlag] = useState(errorTest ? true : false);
 
     useEffect(() => {
             //check if we're testing so we don't call the live API
@@ -41,6 +47,7 @@ const App = () => {
                 setIsLoaded(true);
             }).catch(err => {
                 console.log('Error in public API call:', err);
+                setApiErrorFlag(true);
             });
         }
     }, []);
@@ -48,7 +55,7 @@ const App = () => {
     return (
         <div className="app-container">
             <div className="content">
-                { isLoaded ? <HotelFilterInput hotels={hotels} /> : <p>Loading...</p> }
+                { apiErrorFlag ? <HotelError errorFlag={ apiErrorFlag } setErrorFlag={ setApiErrorFlag } error={<span>Something Went Wrong!</span>}/> : ( isLoaded ? <HotelFilterInput hotels={hotels} /> : <p>Loading...</p> )}
             </div>
         </div>
     )

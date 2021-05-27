@@ -13,13 +13,14 @@ TODO Checklist:
 [x] - TEST: HotelFilterInput component user inputs
 [x] - Write HotelFilterInput component UI
 [x] - Hook up HotelFIlterInput component to Filter and Sort services.
-[] - TEST: filtered and sorted data passed to HotelList
+[o] - TEST: filtered and sorted data passed to HotelList
 [x] - Write HotelList component map
-[] - TEST: Mock Static Hotel Data passed on props and rendered in HotelCard
-[] - Write HotelCard component data display
-[] - TEST: HotelCard Select/Unselect function 
-[] - Write HotelCard Select/Unselect function
-[] - TEST: API call and filter error/no result on HotelError component
-[] - Write HotelError component to render passed error info on props and display "Retry" button on API failure
-[] - General Styling
+[o] - TEST: Mock Static Hotel Data passed on props and rendered in HotelCard
+[x] - Write HotelCard component data display
+[o] - TEST: HotelCard Select/Unselect function 
+[x] - Write HotelCard Select/Unselect function
+[x] - TEST: API call and filter error/no result on HotelError component
+[x] - Write HotelError component to render passed error info on props and display "Retry" button on API failure
+[] - General Styling (text display of details, make responsive)
+[] - Polish (add rocket highlight orange, header with logo, footer with rocket background color)
 [] - Readme Update

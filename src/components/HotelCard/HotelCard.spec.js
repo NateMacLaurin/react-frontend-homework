@@ -9,4 +9,10 @@ describe('HotelCard', () => {
     it('renders the HotelCard component with test API data on props', () => {
         expect(wrapper.find('.hotel-details').exists()).toBe(true);
     });
+
+    it('has a button which toggles select state on click', () => {
+        expect(wrapper.find('button')).toEqual('Select');
+        wrapper.find('button').simulate('click');
+        expect(wrapper.find('button')).toEqual('Book It!');
+    });
 });

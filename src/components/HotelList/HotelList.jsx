@@ -10,7 +10,7 @@ const HotelList = ( {sortedHotels} ) => {
     return (
         <div className="hotel-list">
             {sortedHotels.map(hotel => (
-                <div className="hotel-card" key={hotel.id}>
+                <div key={hotel.id}>
                     <HotelCard hotel={hotel} />
                 </div>
                 )

@@ -6,22 +6,18 @@ import { hotelFilter, hotelSort } from '../../functions/hotel-input/hotel-input-
 
     //global flag for debug console logs
 const debug = true;
+    //set true to test the error handler
+const errorTest = false;
 
 const HotelFilterInput = ( {hotels} ) => {
 
         //state variables to capture user input events
     const [nameFilterInput, setNameFilterInput] = useState("");
     const [sortSelectInput, setSortSelectInput] = useState("");
-        //state variable to hold the filtered and sorted hotel array
-    const [sortedHotels, setSortedHotels] = useState(hotels);
+        //state variable to hold the filtered and sorted hotel array (default value sort the full API list by empty string);
+        //errorTest ternary will initialize the state to false which will cause the HotelError component to render simulating no hotel results
+    const [sortedHotels, setSortedHotels] = useState(errorTest ? false : hotelSort(hotels, sortSelectInput));
 
-        //function to reset Input state to default values
-    const resetInputs = () => {
-        debug && console.log('resetInputs Clicked!');
-        setNameFilterInput("");
-        setSortSelectInput("");
-        setSortedHotels(hotels);
-    };
         //functions to handle filtering and sorting
     const filterFunction = (e) => {
         setNameFilterInput(e);
@@ -45,6 +41,14 @@ const HotelFilterInput = ( {hotels} ) => {
         setSortedHotels(hotelSort(sortedHotels, e));
     }
 
+        //function to reset Input state to default values
+    const resetInputs = () => {
+        debug && console.log('resetInputs Clicked!');
+        setSortedHotels(hotels);
+        setSortSelectInput("");
+        setNameFilterInput("");
+    };
+
     return (
         <>
             <div className="filters">
@@ -54,8 +58,10 @@ const HotelFilterInput = ( {hotels} ) => {
                         type="text" 
                         className="input" 
                         placeholder="Hotel Name"
+                        maxLength="30"
                         value={nameFilterInput}
                         onChange={(event) => filterFunction(event.target.value)}
+
                     />
                     <label htmlFor="select">Sort By</label>
                     <select 
@@ -70,12 +76,13 @@ const HotelFilterInput = ( {hotels} ) => {
                     </select>
                     <button 
                         className="button"
-                        onClick={resetInputs}
+                        onClick={() => resetInputs()}
                     >Reset</button>
                 </div>
             </div>
             <div className="hotel-list">
-                { sortedHotels? <HotelList sortedHotels={ sortedHotels }/> : <HotelError /> }
+                {/*Ternary to handle empty results (behavior may be simulated with errorTest flag)*/}
+                { sortedHotels? <HotelList sortedHotels={ sortedHotels }/> : <HotelError error={<span>No Results available!</span>}/> }
             </div>
         </>
     )
