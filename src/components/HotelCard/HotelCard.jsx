@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
     //global flag for debug console logs
 const debug = true;
 
 const HotelCard = ( {hotel} ) => {
     debug && console.log('hotel:', hotel);
+        //state to conditionally render select/unselect button
+    const [isSelected, setIsSelected] = useState(false);
 
-    const handleSelect = () => {
+    const toggleSelect = () => {
         debug && console.log('HOTELCARD - DEBUG: In handleSelect', hotel.id);
+        setIsSelected(!isSelected);
+
     }
     return (
         <>
@@ -23,6 +27,13 @@ const HotelCard = ( {hotel} ) => {
                 <div className="location">
                     {hotel.hotelStaticContent.neighborhoodName}
                 </div>
+                { isSelected && (<>
+                <div className="hotel-rating">
+                    Rating: {hotel.hotelStaticContent.rating}/10    <span className="reviews">Reviews: {hotel.hotelStaticContent.numberOfReviews}</span>
+                </div>
+                <div className="hotel-description">
+                    {hotel.hotelStaticContent.description}
+                </div></>)}
             </div>
             <div className="price-details">
                 <span className="price">
@@ -33,7 +44,7 @@ const HotelCard = ( {hotel} ) => {
                 <span className="rewards">
                     {hotel.rewards.miles} miles
                 </span>
-                <button className="button" onClick={handleSelect}>Select</button>
+                { isSelected? <button className="button" onClick={toggleSelect}>Book It!</button> : <button className="button" onClick={toggleSelect}>Select</button>}
             </div>
         </>
     )

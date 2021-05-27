@@ -6,22 +6,17 @@ import { hotelFilter, hotelSort } from '../../functions/hotel-input/hotel-input-
 
     //global flag for debug console logs
 const debug = true;
+    //set true to test the error handler
+const errorTest = false;
 
 const HotelFilterInput = ( {hotels} ) => {
 
         //state variables to capture user input events
     const [nameFilterInput, setNameFilterInput] = useState("");
     const [sortSelectInput, setSortSelectInput] = useState("");
-        //state variable to hold the filtered and sorted hotel array
-    const [sortedHotels, setSortedHotels] = useState(hotels);
+        //state variable to hold the filtered and sorted hotel array (default value sort the full API list by empty string);
+    const [sortedHotels, setSortedHotels] = useState(errorTest ? false : hotelSort(hotels, sortSelectInput));
 
-        //function to reset Input state to default values
-    const resetInputs = () => {
-        debug && console.log('resetInputs Clicked!');
-        setNameFilterInput("");
-        setSortSelectInput("");
-        setSortedHotels(hotels);
-    };
         //functions to handle filtering and sorting
     const filterFunction = (e) => {
         setNameFilterInput(e);
@@ -44,6 +39,14 @@ const HotelFilterInput = ( {hotels} ) => {
             //The array size won't change so we can pass the pre-filtered array instead of the full api prop array.
         setSortedHotels(hotelSort(sortedHotels, e));
     }
+
+        //function to reset Input state to default values
+    const resetInputs = () => {
+        debug && console.log('resetInputs Clicked!');
+        setSortedHotels(hotels);
+        setSortSelectInput("");
+        setNameFilterInput("");
+    };
 
     return (
         <>
@@ -70,12 +73,12 @@ const HotelFilterInput = ( {hotels} ) => {
                     </select>
                     <button 
                         className="button"
-                        onClick={resetInputs}
+                        onClick={() => resetInputs()}
                     >Reset</button>
                 </div>
             </div>
             <div className="hotel-list">
-                { sortedHotels? <HotelList sortedHotels={ sortedHotels }/> : <HotelError /> }
+                { sortedHotels? <HotelList sortedHotels={ sortedHotels }/> : <HotelError error={<span>No Results available!</span>}/> }
             </div>
         </>
     )

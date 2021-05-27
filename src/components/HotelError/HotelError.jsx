@@ -1,9 +1,9 @@
 import React from 'react';
 
-const HotelError = () => {
+const HotelError = ( {errorFlag, error} ) => {
     return (
         <div className="error">
-            <h4>HotelError Placeholder</h4>
+            {error}
         </div>
     )
 }

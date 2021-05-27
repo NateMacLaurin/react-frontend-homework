@@ -234,12 +234,12 @@ const mockHotelData =   {
                         "url": "http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg"
                     },
                     "name": "Omni Chicago Hotel & Suites Magnificent Mile",
-                    "neighborhoodName": "Magnificent Mile"
+                    "neighborhoodName": "Magnificent Mile",
+                    "description":"Placeholder Description1.",
+                    "stars": 4,
+                    "rating": 8,
+                    "numberOfReviews": 230
                 },
-                "description":"Placeholder Description1.",
-                "stars": 4,
-                "rating": 8,
-                "numberOfReviews": 230
             },
             {
                 "id": "2",
@@ -255,12 +255,13 @@ const mockHotelData =   {
                         "url": "http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg"
                     },
                     "name": "TestName2",
-                    "neighborhoodName": "TestNeighborhood2"
+                    "neighborhoodName": "TestNeighborhood2",
+                    "description":"Placeholder Description2.",
+                    "stars": 2,
+                    "rating": 8,
+                    "numberOfReviews": 1147
                 },
-                "description":"Placeholder Description2.",
-                "stars": 2,
-                "rating": 8,
-                "numberOfReviews": 1147
+
             },
             {
                 "id": "3",
@@ -276,12 +277,12 @@ const mockHotelData =   {
                     "url": "http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg"
                     },
                     "name": "TestName3",
-                    "neighborhoodName": "TestNeighborhood3"
+                    "neighborhoodName": "TestNeighborhood3",
+                    "description":"Placeholder Description3.",
+                    "stars": 3,
+                    "rating": 9,
+                    "numberOfReviews": 1685
                 },
-                "description":"Placeholder Description3.",
-                "stars": 3,
-                "rating": 9,
-                "numberOfReviews": 1685
             }
         ]
     }
