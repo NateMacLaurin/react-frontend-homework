@@ -5,7 +5,7 @@
     padding: 10px;
     margin: 0 auto;
     max-width: 1200px;
-    background: #21ffd6;
+    background: #21d3ff;
 }
 
 .filters {
@@ -165,3 +165,19 @@
     text-align:center;
 }
 
+.hotel-error {
+    font-weight: 600;
+    font-size: 36px;
+
+    .button {
+        background-color: #ff4e21;
+        color: white;
+        font-size: 1rem;
+        border-radius: 3px;
+        border-color: white;
+        outline: none;
+        width: 100%;
+        padding: 10px;
+        font-weight: 500;
+    }
+}

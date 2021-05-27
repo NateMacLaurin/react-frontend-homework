@@ -7,7 +7,7 @@ const HotelError = ( {errorFlag, setErrorFlag, error} ) => {
     }
 
     return (
-        <div className="error">
+        <div className="hotel-error">
             {/*Display the error context information passed on props from the failing component to the user*/}
             {error}
             {/*If an error flag is passed on props from failing component, flip the flag to */}

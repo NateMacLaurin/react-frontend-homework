@@ -55,7 +55,7 @@ export function hotelSort(dataToSort, sortSelect) {
         case 'recommended': {
                 //array.sort by personal "recommended" formula: [rating*numberOfReviews] descending(b-a) (Default)
             const sortedData = dataToSort.sort((a, b) => {
-                return b.rating*b.numberOfReviews - a.rating*a.numberOfReviews;
+                return b.hotelStaticContent.rating*b.hotelStaticContent.numberOfReviews - a.hotelStaticContent.rating*a.hotelStaticContent.numberOfReviews;
             });
             return sortedData;
         }
