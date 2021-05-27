@@ -2,7 +2,7 @@ import React from 'react';
 import HotelCard from '../HotelCard';
 
     //global flag for debug console logs
-const debug = true;
+const debug = false;
 
 const HotelList = ( {sortedHotels} ) => {
     debug && console.log('HOTELLIST - DEBUG: sortedHotels:', sortedHotels);

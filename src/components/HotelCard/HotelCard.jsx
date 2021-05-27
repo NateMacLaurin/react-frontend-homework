@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DefaultImage from '../../public/Image404-Rocket-Orange-RYB-Complement.jpg';
     //global flag for debug console logs
-const debug = true;
+const debug = false;
 
 const HotelCard = ( {hotel} ) => {
     debug && console.log('hotel:', hotel);
@@ -17,7 +17,7 @@ const HotelCard = ( {hotel} ) => {
     const toggleBooking = () => {
         debug && console.log('HOTELCARD - DEBUG: In toggleBooking', hotel.id);
         //from here we can pass info on to book the user for the hotel
-        console.log('Book It! Clicked!');
+        console.log('Book It! Clicked for:', hotel.id);
     }
 
     return (

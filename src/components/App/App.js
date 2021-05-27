@@ -12,7 +12,7 @@ import Footer from '../Footer';
     //true - Test API, false - live API
 const testing = false;
     //toggle debug console logs
-const debug = true;
+const debug = false;
     //simulate an API error
 const errorTest = false;
 
