@@ -10,9 +10,9 @@ describe('HotelCard', () => {
         expect(wrapper.find('.hotel-details').exists()).toBe(true);
     });
 
-    it('has a button which toggles select state on click', () => {
-        expect(wrapper.find('button')).toEqual('Select');
-        wrapper.find('button').simulate('click');
-        expect(wrapper.find('button')).toEqual('Book It!');
+    it('click prompt on hotel-details functions and renders the rating info', () => {
+        expect(wrapper.find('.hotel-clickprompt').exists());
+        wrapper.find('.hotel-details').simulate('click');
+        expect(wrapper.find('.hotel-rating').exists());
     });
 });
