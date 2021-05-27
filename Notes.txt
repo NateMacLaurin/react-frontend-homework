@@ -158,4 +158,5 @@ font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 footer background color:
 background-color: rgb(27, 28, 36)
 
-footer image:
+favicon:
+401 from rocketmiles REST server :(

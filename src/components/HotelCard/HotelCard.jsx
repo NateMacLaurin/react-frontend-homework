@@ -14,7 +14,7 @@ const HotelCard = ( {hotel} ) => {
 
     }
     return (
-        <>
+        <div className="hotel-card">
             <div
                 className="image"
                 style={{ backgroundImage: `url(${hotel.hotelStaticContent.mainImage.url})`}}
@@ -46,7 +46,7 @@ const HotelCard = ( {hotel} ) => {
                 </span>
                 { isSelected? <button className="button" onClick={toggleSelect}>Book It!</button> : <button className="button" onClick={toggleSelect}>Select</button>}
             </div>
-        </>
+        </div>
     )
 }
 
