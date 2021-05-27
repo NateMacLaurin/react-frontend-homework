@@ -6,6 +6,6 @@ describe('HotelError', () => {
     const wrapper = shallow(<HotelError />);
 
     it('renders the HotelError component', () => {
-        expect(wrapper.find('.error').exists()).toBe(true);
+        expect(wrapper.find('.hotel-error').exists()).toBe(true);
     });
 });

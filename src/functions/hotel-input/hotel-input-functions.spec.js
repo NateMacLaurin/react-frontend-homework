@@ -4,8 +4,6 @@ import MockData from '../../services/hotel-mock-api-data';
     //pull hotels array of objects out of the Mock API call data as it is passed on props in components
 const MockDataProp = MockData.results.hotels;
 
-console.log('MockDataProp', MockDataProp);
-
 describe('HotelInputFunctions - Filter', () => {
 
         //create array of filter input values for testing

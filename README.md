@@ -1,4 +1,5 @@
 # Rocketmiles - React Technical Assesment
+
 ## Notes:
 
 To get things started I decided to break down components for the first requirement, how will they need to scale? What functionality can be grouped? 
