@@ -5,6 +5,8 @@ import hotelResultService from '../../services/hotel-result/hotel-result.service
 import HotelFilterInput from '../HotelFilterInput';
 import testData from '../../services/hotel-mock-api-data';
 import HotelError from '../HotelError';
+import Header from '../Header';
+import Footer from '../Footer';
 
 //global flags for debug console logs and test or live API backend
     //true - Test API, false - live API
@@ -50,14 +52,16 @@ const App = () => {
                 setApiErrorFlag(true);
             });
         }
-    }, []);
+    }, [apiErrorFlag]);
 
     return (
         <div className="app-container">
+            <Header />
             <div className="content">
                 {/*Ternary checks API error state flag for error handling, nested ternary waits for the API data to load from the promise before rendering the filterInput since the api data needs to be on props*/}
                 { apiErrorFlag ? <HotelError errorFlag={ apiErrorFlag } setErrorFlag={ setApiErrorFlag } error={<span>Something Went Wrong!</span>}/> : ( isLoaded ? <HotelFilterInput hotels={hotels} /> : <p>Loading...</p> )}
             </div>
+            <Footer />
         </div>
     )
 }
