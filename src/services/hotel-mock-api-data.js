@@ -252,7 +252,7 @@ const mockHotelData =   {
                 },
                 "hotelStaticContent": {
                     "mainImage": {
-                        "url": "http://d2whcypojkzby.cloudfront.net/imageRepo/2/0/68/56/314/ExteriorCarsGone_S.jpg"
+                        "url": false
                     },
                     "name": "TestName2",
                     "neighborhoodName": "TestNeighborhood2",

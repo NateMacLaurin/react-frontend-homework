@@ -21,12 +21,17 @@ might use the useRefs hook to store the previous sorted arrays to avoid calling 
 
 Next on my TODO list, I built out the HotelCard select button and chose to display the details text, as well as the rating and reviews, which are multiplied for a weighted value in my "Recommended" filter. At this point, I decided
 to try loading the live API to ensure everything I've built so far scales to the live API calls, especially since react hooks occur asynchronously. I greatly appreciated my choice to use a "test" flag in my App component to make calling the test API and live API data very simple! My sort and filter functions worked immediately, but the
-details, ratings, and reviews would not render. Upon further investigation, I had built the hotel object prototype out slightly incorrectly, which was an easy fix. I also chose to add a quick blank image placeholder ternary so that the images returning 404 fail gracefully to the user.
+details, ratings, and reviews would not render. Upon further investigation, I had built the test hotel object prototype out slightly incorrectly, which was an easy fix. I also chose to add a quick blank image placeholder ternary so that the images returning 404 fail gracefully to the user.
 
 Handling errors, I am passing a flag on props from the API call error in app so that I can render a button in the error component and reset the flag to re-render app and re-try the API call. Additionally, I chose to render a span with error context text for the user.
 In order to test error handling, I diverged from TDD at this point and instead chose to use a global flag to manipulate the data. The global flag is useful for live testing, and when I have more time, I plan to research how to implement TDD on the react lifecycle.
 
+Tests and time issues.
 
+The last thing on my list is to do a bit of styling and commenting. For styling, I checked out the rocket page and grabbed your rocket orange color, which I am using on all user interactable objects as well as the price to draw focus. I also researched its color complement and am using that for the 
+background.
+
+If I had more time, future features would include responsive design implementation, integration testing of the react lifecycle components, and more sorting capabilities based on the plethora of hotel data available from the API.
 ###################################################
 Issues:
 
