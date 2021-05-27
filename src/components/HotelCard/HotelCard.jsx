@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DefaultImage from '../../public/Image404-Rocket-Orange-RGB-Complement.jpg';
+import DefaultImage from '../../public/Image404-Rocket-Orange-RYB-Complement.jpg';
     //global flag for debug console logs
 const debug = true;
 
@@ -46,7 +46,10 @@ const HotelCard = ( {hotel} ) => {
                 { isSelected ?
                 <>
                 <div className="hotel-rating">
-                    Rating: {hotel.hotelStaticContent.rating}/10    <span className="reviews">Reviews: {hotel.hotelStaticContent.numberOfReviews}</span>
+                    Rating: {hotel.hotelStaticContent.rating} / 10
+                    <div className="hotel-reviews">
+                        Reviews: {hotel.hotelStaticContent.numberOfReviews}
+                    </div>
                 </div>
                 <div className="hotel-description">
                     {hotel.hotelStaticContent.description}
