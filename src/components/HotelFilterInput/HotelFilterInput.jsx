@@ -15,6 +15,7 @@ const HotelFilterInput = ( {hotels} ) => {
     const [nameFilterInput, setNameFilterInput] = useState("");
     const [sortSelectInput, setSortSelectInput] = useState("");
         //state variable to hold the filtered and sorted hotel array (default value sort the full API list by empty string);
+        //errorTest ternary will initialize the state to false which will cause the HotelError component to render simulating no hotel results
     const [sortedHotels, setSortedHotels] = useState(errorTest ? false : hotelSort(hotels, sortSelectInput));
 
         //functions to handle filtering and sorting
@@ -80,6 +81,7 @@ const HotelFilterInput = ( {hotels} ) => {
                 </div>
             </div>
             <div className="hotel-list">
+                {/*Ternary to handle empty results (behavior may be simulated with errorTest flag)*/}
                 { sortedHotels? <HotelList sortedHotels={ sortedHotels }/> : <HotelError error={<span>No Results available!</span>}/> }
             </div>
         </>

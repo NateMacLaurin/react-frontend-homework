@@ -5,7 +5,7 @@
     padding: 10px;
     margin: 0 auto;
     max-width: 1200px;
-    background: #DCDCDC;
+    background: #21ffd6;
 }
 
 .filters {
@@ -33,7 +33,7 @@
         font-size: 0.8rem;
         border: none;
         outline: none;
-        background: #6d6d6d;
+        background: #ff4e21;
         color: white;
         cursor: pointer;
         padding: 10px;
@@ -47,7 +47,7 @@
         font-size: 1rem;
         width: 100%;
         border-radius: 2px;
-        border: 1px solid #dcdcdc;
+        border: 1px solid #ff4e21;
         margin-bottom: 10px;
         font-family: system;
         font-weight: 500;
@@ -92,6 +92,7 @@
     .location {
         color: #6d6d6d;
         font-size: 13px;
+        margin-bottom: 10px;
     }
 
     .price-details {
@@ -104,7 +105,7 @@
 
     .price {
         font-weight: 500;
-        color: #6DBA4A;
+        color: #ff4e21;
     }
 
     .rewards {
@@ -112,10 +113,11 @@
     }
 
     .button {
-        background-color: #6DBA4A;
+        background-color: #ff4e21;
         color: white;
         font-size: 1rem;
         border-radius: 3px;
+        border-color: white;
         outline: none;
         width: 100%;
         padding: 10px;
