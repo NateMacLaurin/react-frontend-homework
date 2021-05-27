@@ -23,4 +23,4 @@ TODO Checklist:
 [x] - Write HotelError component to render passed error info on props and display "Retry" button on API failure
 [x] - General Styling (text display of details, make responsive)
 [x] - Polish (add rocket highlight orange, header with logo, footer with rocket background color)
-[] - Readme Update
+[x] - Readme Update
