@@ -8,11 +8,11 @@ import HotelError from '../HotelError';
 
 //global flags for debug console logs and test or live API backend
     //true - Test API, false - live API
-const testing = true;
+const testing = false;
     //toggle debug console logs
 const debug = true;
     //simulate an API error
-const errorTest = true;
+const errorTest = false;
 
 const App = () => {
         //local state to store the API data from GET request

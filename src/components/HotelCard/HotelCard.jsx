@@ -15,11 +15,12 @@ const HotelCard = ( {hotel} ) => {
     }
     return (
         <div className="hotel-card">
-            {/* Adding ternary to handle the 404 photos */}
+            {/* Adding ternary to handle missing photos and secondary image to handle the 404s*/}
             { hotel.hotelStaticContent.mainImage.url ? 
             <div
                 className="image"
-                style={{ backgroundImage: `url(${hotel.hotelStaticContent.mainImage.url})`}}
+                style={{ 
+                    backgroundImage: `url(${hotel.hotelStaticContent.mainImage.url}), url(../../images/Image404.jpg)`}}
             >
             </div> : 
             <div 
