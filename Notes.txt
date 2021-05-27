@@ -156,6 +156,8 @@ header image:
 <img src="https://d4466r3vlr9ym.cloudfront.net/uploads/logos/rocketmiles.png" height="auto" maxwidth="230,230,255" alt="Logo">
 
 color: #ff4e21
+complement RGB: #21d3ff
+complement RYB: #21ffd6
 
 rocket orange emphasis color
 font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;

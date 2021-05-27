@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DefaultImage from '../../public/Image404.jpg';
+import DefaultImage from '../../public/Image404-Rocket-Orange-RGB-Complement.jpg';
     //global flag for debug console logs
 const debug = true;
 
@@ -13,6 +13,13 @@ const HotelCard = ( {hotel} ) => {
         setIsSelected(!isSelected);
 
     }
+
+    const toggleBooking = () => {
+        debug && console.log('HOTELCARD - DEBUG: In toggleBooking', hotel.id);
+        //from here we can pass info on to book the user for the hotel
+        console.log('Book It! Clicked!');
+    }
+
     return (
         <div className="hotel-card">
             {/* Adding ternary to handle missing photos and secondary image to handle the 404s*/}
@@ -29,20 +36,26 @@ const HotelCard = ( {hotel} ) => {
                 No Image Available
             </div> 
             }
-            <div className="hotel-details">
+            <div className="hotel-details" onClick={toggleSelect}>
                 <div className="hotel-name">
                     {hotel.hotelStaticContent.name}
                 </div>
                 <div className="location">
                     {hotel.hotelStaticContent.neighborhoodName}
                 </div>
-                { isSelected && (<>
+                { isSelected ?
+                <>
                 <div className="hotel-rating">
                     Rating: {hotel.hotelStaticContent.rating}/10    <span className="reviews">Reviews: {hotel.hotelStaticContent.numberOfReviews}</span>
                 </div>
                 <div className="hotel-description">
                     {hotel.hotelStaticContent.description}
-                </div></>)}
+                </div>
+                </> : 
+                <div className="hotel-clickprompt">
+                    Click for Details
+                </div>
+                }
             </div>
             <div className="price-details">
                 <span className="price">
@@ -53,7 +66,7 @@ const HotelCard = ( {hotel} ) => {
                 <span className="rewards">
                     {hotel.rewards.miles} miles
                 </span>
-                { isSelected? <button className="button" onClick={toggleSelect}>Book It!</button> : <button className="button" onClick={toggleSelect}>Select</button>}
+                <button className="button" onClick={toggleBooking}>Book It!</button>
             </div>
         </div>
     )
