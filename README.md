@@ -88,3 +88,6 @@ Java 11
 
 #### Instructions: 
 Checkout instructions.pdf
+
+#### Notes: 
+Notes about the dev process can be found in Notes.txt
