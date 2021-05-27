@@ -5,7 +5,7 @@ import HotelError from '../HotelError';
 import { hotelFilter, hotelSort } from '../../functions/hotel-input/hotel-input-functions';
 
     //global flag for debug console logs
-const debug = true;
+const debug = false;
     //set true to test the error handler
 const errorTest = false;
 

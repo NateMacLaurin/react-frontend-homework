@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-
+import DefaultImage from '../../public/Image404-Rocket-Orange-RYB-Complement.jpg';
     //global flag for debug console logs
-const debug = true;
+const debug = false;
 
 const HotelCard = ( {hotel} ) => {
     debug && console.log('hotel:', hotel);
@@ -13,6 +13,13 @@ const HotelCard = ( {hotel} ) => {
         setIsSelected(!isSelected);
 
     }
+
+    const toggleBooking = () => {
+        debug && console.log('HOTELCARD - DEBUG: In toggleBooking', hotel.id);
+        //from here we can pass info on to book the user for the hotel
+        console.log('Book It! Clicked for:', hotel.id);
+    }
+
     return (
         <div className="hotel-card">
             {/* Adding ternary to handle missing photos and secondary image to handle the 404s*/}
@@ -20,7 +27,7 @@ const HotelCard = ( {hotel} ) => {
             <div
                 className="image"
                 style={{ 
-                    backgroundImage: `url(${hotel.hotelStaticContent.mainImage.url}), url(../../images/Image404.jpg)`}}
+                    backgroundImage: `url(${hotel.hotelStaticContent.mainImage.url}), url(${DefaultImage})`}}
             >
             </div> : 
             <div 
@@ -29,20 +36,29 @@ const HotelCard = ( {hotel} ) => {
                 No Image Available
             </div> 
             }
-            <div className="hotel-details">
+            <div className="hotel-details" onClick={toggleSelect}>
                 <div className="hotel-name">
                     {hotel.hotelStaticContent.name}
                 </div>
                 <div className="location">
                     {hotel.hotelStaticContent.neighborhoodName}
                 </div>
-                { isSelected && (<>
+                { isSelected ?
+                <>
                 <div className="hotel-rating">
-                    Rating: {hotel.hotelStaticContent.rating}/10    <span className="reviews">Reviews: {hotel.hotelStaticContent.numberOfReviews}</span>
+                    Rating: {hotel.hotelStaticContent.rating} / 10
+                    <div className="hotel-reviews">
+                        Reviews: {hotel.hotelStaticContent.numberOfReviews}
+                    </div>
                 </div>
                 <div className="hotel-description">
                     {hotel.hotelStaticContent.description}
-                </div></>)}
+                </div>
+                </> : 
+                <div className="hotel-clickprompt">
+                    Click for Details
+                </div>
+                }
             </div>
             <div className="price-details">
                 <span className="price">
@@ -53,7 +69,7 @@ const HotelCard = ( {hotel} ) => {
                 <span className="rewards">
                     {hotel.rewards.miles} miles
                 </span>
-                { isSelected? <button className="button" onClick={toggleSelect}>Book It!</button> : <button className="button" onClick={toggleSelect}>Select</button>}
+                <button className="button" onClick={toggleBooking}>Book It!</button>
             </div>
         </div>
     )
