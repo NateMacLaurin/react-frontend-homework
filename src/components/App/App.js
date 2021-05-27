@@ -6,9 +6,12 @@ import HotelFilterInput from '../HotelFilterInput';
 import testData from '../../services/hotel-mock-api-data';
 import HotelError from '../HotelError';
 
-    //global flags for debug console logs and test or live API backend
+//global flags for debug console logs and test or live API backend
+    //true - Test API, false - live API
 const testing = true;
+    //toggle debug console logs
 const debug = true;
+    //simulate an API error
 const errorTest = true;
 
 const App = () => {
@@ -52,7 +55,7 @@ const App = () => {
     return (
         <div className="app-container">
             <div className="content">
-                { apiErrorFlag ? <HotelError errorFlag={ apiErrorFlag } error={<span>Something Went Wrong!</span>}/> : ( isLoaded ? <HotelFilterInput hotels={hotels} /> : <p>Loading...</p> )}
+                { apiErrorFlag ? <HotelError errorFlag={ apiErrorFlag } setErrorFlag={ setApiErrorFlag } error={<span>Something Went Wrong!</span>}/> : ( isLoaded ? <HotelFilterInput hotels={hotels} /> : <p>Loading...</p> )}
             </div>
         </div>
     )

@@ -57,8 +57,10 @@ const HotelFilterInput = ( {hotels} ) => {
                         type="text" 
                         className="input" 
                         placeholder="Hotel Name"
+                        maxLength="30"
                         value={nameFilterInput}
                         onChange={(event) => filterFunction(event.target.value)}
+
                     />
                     <label htmlFor="select">Sort By</label>
                     <select 
