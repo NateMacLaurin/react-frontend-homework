@@ -55,6 +55,7 @@ const App = () => {
     return (
         <div className="app-container">
             <div className="content">
+                {/*Ternary checks API error state flag for error handling, nested ternary waits for the API data to load from the promise before rendering the filterInput since the api data needs to be on props*/}
                 { apiErrorFlag ? <HotelError errorFlag={ apiErrorFlag } setErrorFlag={ setApiErrorFlag } error={<span>Something Went Wrong!</span>}/> : ( isLoaded ? <HotelFilterInput hotels={hotels} /> : <p>Loading...</p> )}
             </div>
         </div>

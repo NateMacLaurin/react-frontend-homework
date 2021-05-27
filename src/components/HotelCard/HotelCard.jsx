@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import DefaultImage from '../../public/Image404.jpg';
     //global flag for debug console logs
 const debug = true;
 
@@ -20,7 +20,7 @@ const HotelCard = ( {hotel} ) => {
             <div
                 className="image"
                 style={{ 
-                    backgroundImage: `url(${hotel.hotelStaticContent.mainImage.url}), url(../../images/Image404.jpg)`}}
+                    backgroundImage: `url(${hotel.hotelStaticContent.mainImage.url}), url(${DefaultImage})`}}
             >
             </div> : 
             <div 
